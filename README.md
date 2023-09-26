@@ -1,3 +1,3 @@
 # golangbot
 
-features in command.go </br>
+feature is in command.go </br>
