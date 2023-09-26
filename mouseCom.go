@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"path"
 	"time"
 
 	"github.com/go-vgo/robotgo"
@@ -22,10 +23,24 @@ func pos() {
 }
 
 func moveRandomIcon(count int) {
-	
-	for i := 0; i < count; i++ {
-		robotgo.MoveSmooth(rand.Intn(r), rand.Intn(r))
+	dir := getFileName("img/")
+	var s []string
+	for _, n := range dir {
+		if path.Ext(n) == ".png" {
+			s = append(s, "img/"+n)
+		}
 	}
+	for i := 0; i < count; i++ {
+		moveToIcon(s[rand.Intn(len(s))])
+		robotgo.Click()
+		time.Sleep(2 * lag * time.Millisecond)
+		closeWindow()
+	}
+}
+
+func closeWindow() {
+	moveToIcon("img/close/closeImg.png")
+	robotgo.Click()
 }
 
 func moveRandom(r int, count int) {
@@ -37,11 +52,15 @@ func moveRandom(r int, count int) {
 func moveToIcon(filename string) {
 	img1, _, _ := robotgo.DecodeImg(filename)
 	img := robotgo.CaptureImg()
+	//img1, _ := robotgo.Read(filename)
 	m1, _ := gcv.ImgToMat(img)
 	m2, _ := gcv.ImgToMat(img1)
 	rs := gcv.FindAllTemplate(m1, m2, 0.8)
-	//fmt.Println("find: ", rs)
-	robotgo.MoveSmooth(rs[0].Middle.X/2, rs[0].Middle.Y/2)
+	//rs := gcv.FindAllImg(img1, img)
+	//fmt.Println("find: ", rs, "HIGH: ", rs[0].MaxVal)
+	if len(rs) != 0 {
+		robotgo.MoveSmooth(rs[0].Middle.X/2, rs[0].Middle.Y/2)
+	}
 }
 
 func scrollTop() {
