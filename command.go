@@ -5,8 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"time"
-
-	"gocv.io/x/gocv"
+	//"gocv.io/x/gocv"
 )
 
 func hellofunc() {
@@ -17,6 +16,7 @@ func hellofunc() {
 	typing("ello justin")
 }
 
+/*
 func display(img gocv.Mat) {
 	window := gocv.NewWindow("Hello")
 	if img.Empty() {
@@ -30,6 +30,7 @@ func display(img gocv.Mat) {
 		}
 	}
 }
+*/
 
 // cite https://www.tutorialspoint.com/golang-program-to-get-the-list-the-name-of-files-in-a-specified-directory
 // get file name under directory

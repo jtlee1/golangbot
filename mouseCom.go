@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"math/rand"
 	"path"
 	"time"
@@ -10,6 +10,7 @@ import (
 	"github.com/vcaesar/gcv"
 )
 
+/*
 func pos() {
 	for {
 		x, y := robotgo.GetMousePos()
@@ -21,6 +22,7 @@ func pos() {
 		//robotgo.Move(x, y)
 	}
 }
+*/
 
 func moveRandomIcon(count int) {
 	dir := getFileName("img/")
@@ -63,6 +65,7 @@ func moveToIcon(filename string) {
 	}
 }
 
+/*
 func scrollTop() {
 	robotgo.Scroll(1000, 1000)
-}
+}*/
