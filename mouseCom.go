@@ -2,6 +2,7 @@ package main
 
 import (
 	//"fmt"
+	"fmt"
 	"math/rand"
 	"path"
 	"time"
@@ -35,7 +36,7 @@ func moveRandomIcon(count int) {
 	for i := 0; i < count; i++ {
 		moveToIcon(s[rand.Intn(len(s))])
 		robotgo.Click()
-		time.Sleep(2 * lag * time.Millisecond)
+		time.Sleep(4 * lag * time.Millisecond)
 		closeWindow()
 	}
 }
@@ -59,7 +60,7 @@ func moveToIcon(filename string) {
 	m2, _ := gcv.ImgToMat(img1)
 	rs := gcv.FindAllTemplate(m1, m2, 0.8)
 	//rs := gcv.FindAllImg(img1, img)
-	//fmt.Println("find: ", rs, "HIGH: ", rs[0].MaxVal)
+	fmt.Println("find: ", filename, " HIGH: ", rs[0].MaxVal)
 	if len(rs) != 0 {
 		robotgo.MoveSmooth(rs[0].Middle.X/2, rs[0].Middle.Y/2)
 	}

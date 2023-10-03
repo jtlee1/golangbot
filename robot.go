@@ -8,9 +8,12 @@ import (
 var lag time.Duration = 500
 
 func main() {
-	moveRandom(1000, 3)
-	moveRandomIcon(3)
-	hellofunc()
+	for {
+		moveRandomIcon(1)
+	}
+	//moveRandom(1000, 3)
+	//moveRandomIcon(3)
+	//hellofunc()
 	//closeWindow()
 
 }
